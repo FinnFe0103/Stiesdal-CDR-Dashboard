@@ -4,7 +4,7 @@ from PIL import Image
 
 from . import method_dropdown, purchaser_chart, supplier_chart, date_select, KPIs
 
-pil_img = Image.open("src/components/Stiesdal logo v1.png")
+#pil_img = Image.open("src/components/Stiesdal logo v1.png")
 
 def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
     return html.Div(
@@ -16,9 +16,9 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
             html.H1(app.title,
                     style={"width": "75%", "display": "inline-block", "margin-left": "10px", "margin-top": "20px", "font-size": "1.5em", "color": "black"}
             ),
-            html.Img(src=pil_img, 
-                     style={"width": "100px", "display": "inline-block", "float": "right", "margin-top": "20px", "margin-right": "20px"}
-            ),
+            #html.Img(src=pil_img, 
+            #         style={"width": "100px", "display": "inline-block", "float": "right", "margin-top": "20px", "margin-right": "20px"}
+            #),
             # horizontal line under the header
             html.Hr(),
             # another Div object inside the existing Div object
