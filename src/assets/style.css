@@ -1,0 +1,67 @@
+hr {
+    border-top: 2px solid gray;
+}
+
+h1 {
+    /* color: hotpink; */
+    font-size: 1.2em;
+}
+
+
+
+.dropdown-container {
+    width: 17.5%;
+    height: auto;
+}
+
+.dropdown-div {
+    display: inline-block;
+    width: 90%;
+}
+.dropdown-button {
+    /* margin-top: 5px; */
+    /* display: inline-block; */
+    width: auto;
+    /* height: 35px; */
+    /* vertical-align: top; */
+    /* margin-left: 5px; */
+    /* margin-top: 5px; */
+}
+
+.DateRangePickerInput {
+    background-color: inherit;
+    width: 300px;
+  }
+
+.DateInput_input, .DateInput_input_1 {
+/* my personal stuff */
+    text-align: center;
+}
+
+.date-button-group{
+    width: 350px;
+}
+
+.date-button {
+    /* width: 100%; */
+    margin-top: 5px;
+}
+
+.tabs-group {
+    padding-top: 20px;
+}
+
+.app-div {
+    padding: 5px;
+}
+
+.data-table-div {
+    margin: auto;
+    padding: 10px;
+}
+
+@media(max-width: 800px) {
+    .dropdown-container {
+        grid-template-columns: 1fr;
+    }
+}
