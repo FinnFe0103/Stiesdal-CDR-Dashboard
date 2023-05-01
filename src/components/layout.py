@@ -3,9 +3,7 @@ import pandas as pd
 from PIL import Image
 
 from . import method_dropdown, purchaser_chart, supplier_chart, date_select, KPIs
-import os
 
-print("Current cwd: ", os.getcwd())
 pil_img = Image.open("src/components/Stiesdal logo v1.png")
 
 def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
