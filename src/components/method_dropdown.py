@@ -9,7 +9,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
     # defines what objects can be picked from the dropdown
     methods = list(data["CDR Method"].dropna().unique())
     methods.insert(0, "All Methods")
-    print(methods)
+    #print(methods)
 
     # communication is enabled using callbacks and the ids of the objects
     @app.callback(

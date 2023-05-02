@@ -3,11 +3,9 @@ hr {
 }
 
 h1 {
-    /* color: hotpink; */
+    color: hotpink; 
     font-size: 1.2em;
 }
-
-
 
 .dropdown-container {
     width: 17.5%;
