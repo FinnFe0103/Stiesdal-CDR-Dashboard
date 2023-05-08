@@ -1,7 +1,7 @@
 services:
   # See https://render.com/docs/blueprint-spec for more info on render blueprints
   - type: web
-    name: Stiesdal-CDR-Dashboard
+    name: Stiesdal-CDR-Dashboard-2
     env: python
     region: frankfurt
     plan: free
