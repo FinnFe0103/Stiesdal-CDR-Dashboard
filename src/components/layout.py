@@ -4,6 +4,8 @@ from PIL import Image
 
 from . import method_dropdown, purchaser_chart, supplier_chart, date_select, KPIs
 
+image_path = "../assets/Stiesdal logo v1.png"
+
 def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
     return html.Div(
         # name of the Div class
@@ -14,7 +16,7 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
             html.H1(app.title,
                     style={"width": "75%", "display": "inline-block", "margin-left": "10px", "margin-top": "20px", "font-size": "1.5em", "color": "black"}
             ),
-            html.Img(src="src/assets/Stiesdal logo v1.png", 
+            html.Img(src=image_path, 
                      style={"width": "100px", "display": "inline-block", "float": "right", "margin-top": "20px", "margin-right": "20px"}
             ),
             # horizontal line under the header
