@@ -3,6 +3,7 @@ services:
   - type: web
     name: Test
     env: python
+    region: frankfurt
     plan: free
     # A requirements.txt file must exist
     buildCommand: pip install -r requirements.txt
