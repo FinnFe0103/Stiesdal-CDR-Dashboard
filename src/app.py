@@ -6,7 +6,7 @@ from components.layout import create_layout
 from components.import_cdr import import_data
 
 data = import_data()
-app = Dash(__name__, external_stylesheets=[BOOTSTRAP])
+app = Dash(__name__, external_stylesheets=[BOOTSTRAP])#a
 app.title = "Carbon Dioxide Removal - Certificate Market"
 app.layout = create_layout(app, data)
 
