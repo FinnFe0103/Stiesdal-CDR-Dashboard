@@ -35,8 +35,8 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
 
         elif methods == "All Methods":
             filtered_data = filtered_data.dropna(subset=["Price per Ton"]).sort_values("Announcement Date")
-            fig = px.line(filtered_data, x="Announcement Date", y="Price per Ton", title="Price per Ton over Time", height=600, width=960, markers=True)
-            fig.update_traces(line_color="#00497a")
+            fig = px.line(filtered_data, x="Announcement Date", y="Price per Ton", color="CDR Method", title="Price per Ton over Time", height=600, width=960, markers=True)
+            #fig.update_traces(line_color="#00497a")
         
         return html.Div(dcc.Graph(figure=fig), id=_00_own_ids.PPT_CHART)
 

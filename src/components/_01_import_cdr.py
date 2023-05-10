@@ -16,5 +16,6 @@ def import_data():
     cdr_fyi["Price per Ton"] = cdr_fyi["Total price (USD)"] / cdr_fyi["Tons Purchased"]
     cdr_fyi["Announcement Date"] = cdr_fyi["Announcement Date"].str.split(" ", n=1).str[0]
     cdr_fyi.rename(columns={"Tons Purchased": "Tons Purchased/Sold"}, inplace=True)
+    cdr_fyi["CDR Method"] = np.where(cdr_fyi["CDR Method"] == "Enhanced Weathering", "Enhanced weathering", cdr_fyi["CDR Method"])
 
     return cdr_fyi
