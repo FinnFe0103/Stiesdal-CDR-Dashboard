@@ -25,19 +25,21 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
         fig = go.Figure()
         fig.add_trace(
             go.Indicator(
-                title = {"text": "Total Purchased (k)", "font":{"size":ts, "color":hx_t}},
+                title = {"text": "Total Purchased", "font":{"size":ts, "color":hx_t}},
                 mode = "number",
                 value = round(sum(filtered_data["Tons Purchased/Sold"])/1000, 2),
-                number = {'valueformat':'.2f', "suffix": "t", "font":{"size":fs, "color":hx}},
+                number = {'valueformat':'.2f', "suffix": "kt", "font":{"size":fs, "color":hx}},
+                #number = {'valueformat':'.2f', "font":{"size":fs, "color":hx}},
                 domain = {"row": 0, "column": 0}
             ),
         )
         fig.add_trace(
             go.Indicator(
-                title = {"text": "Total Delivered (k)", "font":{"size":ts, "color":hx_t}},
+                title = {"text": "Total Delivered", "font":{"size":ts, "color":hx_t}},
                 mode = "number",
                 value = round(sum(filtered_data["Tons Delivered"])/1000, 2),
-                number = {'valueformat':'.2f', "suffix": "t", "font":{"size":fs, "color":hx}},
+                number = {'valueformat':'.2f', "suffix": "kt", "font":{"size":fs, "color":hx}},
+                #number = {'valueformat':'.2f', "font":{"size":fs, "color":hx}},
                 domain = {"row": 0, "column": 1}
             ),
         )
@@ -47,6 +49,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
                 mode = "number",
                 value = sum(filtered_data["Tons Delivered"]) / sum(filtered_data["Tons Purchased/Sold"]) *100 if sum(filtered_data["Tons Purchased/Sold"]) != 0 else 0,
                 number = {'valueformat':'.2f', "suffix": "%", "font":{"size":fs, "color":hx}},
+                #number = {'valueformat':'.2f', "font":{"size":fs, "color":hx}},
                 domain = {"row": 0, "column": 2}
             ),
         )
@@ -74,6 +77,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
                 mode = "number",
                 value = filtered_data["Price per Ton"].mean(),
                 number = {'valueformat':'.2f', "prefix": "$","font":{"size":fs, "color":hx}},
+                #number = {'valueformat':'.2f',"font":{"size":fs, "color":hx}},
                 domain = {"row": 0, "column": 5}
             ),
         )
