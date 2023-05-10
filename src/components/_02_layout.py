@@ -1,8 +1,7 @@
 from dash import Dash, html
 import pandas as pd
-from PIL import Image
 
-from . import method_dropdown, purchaser_chart, supplier_chart, date_select, KPIs
+from . import _03_date_select, _03_method_dropdown, _05_purchaser_chart, _05_supplier_chart, _05_KPIs
 
 image_path = "../assets/Stiesdal logo v1.png"
 
@@ -23,11 +22,11 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
             html.Hr(),
             # another Div object inside the existing Div object
             html.Div(
-                children=[date_select.render(app, data)],
+                children=[_03_date_select.render(app, data)],
                 style={"margin-left": "10px", "width": "auto", "display": "inline-block"}
             ),
             html.Div(
-                children=[KPIs.render(app, data)],
+                children=[_05_KPIs.render(app, data)],
                 style={"margin": "10px", "width": "75%", "height": "100px", "display": "inline-block"}
             ),
             html.Div(
@@ -35,15 +34,15 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
                 className="dropdown-container",
                 # objects of this Div class
                 # need to pass the created app to the render function
-                children=[method_dropdown.render(app, data)],
+                children=[_03_method_dropdown.render(app, data)],
                 style={'margin': '10px'}
             ),
             html.Div(
-                children=[supplier_chart.render(app, data)],
+                children=[_05_supplier_chart.render(app, data)],
                 style={"width": "45%", "display": "inline-block", "margin-left": "10px"}
             ),
             html.Div(
-                children=[purchaser_chart.render(app, data)],
+                children=[_05_purchaser_chart.render(app, data)],
                 style={"width": "45%", "display": "inline-block", "margin-left": "60px"}
             )
         ]

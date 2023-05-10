@@ -3,15 +3,15 @@ from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 import pandas as pd
 
-from . import own_ids
+from . import _00_own_ids
 
 def render(app: Dash, data: pd.DataFrame) -> html.Div:
 
     @app.callback(
-        Output(own_ids.KPIS, "children"),
-        [Input(own_ids.METHOD_DROPDOWN, "value"), 
-         Input(own_ids.DATE_RANGE, "start_date"),
-         Input(own_ids.DATE_RANGE, "end_date")]
+        Output(_00_own_ids.KPIS, "children"),
+        [Input(_00_own_ids.METHOD_DROPDOWN, "value"), 
+         Input(_00_own_ids.DATE_RANGE, "start_date"),
+         Input(_00_own_ids.DATE_RANGE, "end_date")]
     )
     def update_KPIs(methods, start_date, end_date):
         filtered_data = data[(data["Announcement Date"] > start_date) & (data["Announcement Date"] < end_date)]
@@ -89,7 +89,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
             margin_r=20
             )
 
-        return html.Div(dcc.Graph(figure=fig), id=own_ids.KPIS)
+        return html.Div(dcc.Graph(figure=fig), id=_00_own_ids.KPIS)
     
-    return html.Div(id=own_ids.KPIS)
+    return html.Div(id=_00_own_ids.KPIS)
     

@@ -2,8 +2,8 @@ from dash import Dash
 from dash_bootstrap_components.themes import BOOTSTRAP
 from dash import Dash, dcc, html
 
-from components.layout import create_layout
-from components.import_cdr import import_data
+from components._01_import_cdr import import_data
+from components._02_layout import create_layout
 
 data = import_data()
 app = Dash(__name__, external_stylesheets=[BOOTSTRAP])#a
