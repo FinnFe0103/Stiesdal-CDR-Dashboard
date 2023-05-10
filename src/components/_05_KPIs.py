@@ -16,8 +16,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
     def update_KPIs(methods, start_date, end_date):
         filtered_data = data[(data["Announcement Date"] > start_date) & (data["Announcement Date"] < end_date)]
         if methods in list(data["CDR Method"].dropna().unique()):
-            filtered_data = filtered_data[data["CDR Method"] == methods]
-            # filtered_data = data[data["CDR Method"].isin(methods)]
+            filtered_data = filtered_data[filtered_data["CDR Method"] == methods]
 
         fs = 40
         ts = 20
@@ -31,7 +30,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
                 value = round(sum(filtered_data["Tons Purchased"])/1000, 2),
                 number = {'valueformat':'.2f', "suffix": "t", "font":{"size":fs, "color":hx}},
                 domain = {"row": 0, "column": 0}
-            )
+            ),
         )
         fig.add_trace(
             go.Indicator(
@@ -40,16 +39,16 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
                 value = round(sum(filtered_data["Tons Delivered"])/1000, 2),
                 number = {'valueformat':'.2f', "suffix": "t", "font":{"size":fs, "color":hx}},
                 domain = {"row": 0, "column": 1}
-            )
+            ),
         )
         fig.add_trace(
             go.Indicator(
                 title = {"text": "Purchases Delivered", "font":{"size":ts, "color":hx_t}},
                 mode = "number",
-                value = sum(filtered_data["Tons Delivered"]) / sum(filtered_data["Tons Purchased"]) *100,
+                value = sum(filtered_data["Tons Delivered"]) / sum(filtered_data["Tons Purchased"]) *100 if sum(filtered_data["Tons Purchased"]) != 0 else 0,
                 number = {'valueformat':'.2f', "suffix": "%", "font":{"size":fs, "color":hx}},
                 domain = {"row": 0, "column": 2}
-            )
+            ),
         )
         fig.add_trace(
             go.Indicator(
@@ -58,7 +57,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
                 value = filtered_data["Supplier"].nunique(),
                 number = {"font":{"size":fs, "color":hx}},
                 domain = {"row": 0, "column": 3}
-            )
+            ),
         )
         fig.add_trace(
             go.Indicator(
@@ -67,7 +66,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
                 value = filtered_data["Purchaser"].nunique(),
                 number = {"font":{"size":fs, "color":hx}},
                 domain = {"row": 0, "column": 4}
-            )
+            ),
         )
         fig.add_trace(
             go.Indicator(
@@ -76,7 +75,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
                 value = filtered_data["Price per Ton"].mean(),
                 number = {'valueformat':'.2f', "prefix": "$","font":{"size":fs, "color":hx}},
                 domain = {"row": 0, "column": 5}
-            )
+            ),
         )
         fig.update_layout(
             grid = {'rows': 1, 'columns': 6, 'pattern': "coupled", "xgap": 0.1}, 

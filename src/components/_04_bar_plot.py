@@ -9,7 +9,7 @@ def build_plot(df, h=0):
     top_ten.reset_index(inplace=True)
     #top_ten["y_r"] = top_ten[y].round(2)
     top_ten[y] = top_ten[y].round(2)
-    top_ten["x_s"] = top_ten[x].apply(lambda x: x[:12]+"...")
+    top_ten["x_s"] = top_ten[x].apply(lambda x: x[:12]+"..." if len(x)>12 else x)
 
     title = f"Top 10 {x} by {y}"
 

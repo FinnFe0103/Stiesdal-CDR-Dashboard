@@ -1,7 +1,7 @@
 from dash import Dash, html
 import pandas as pd
 
-from . import _03_date_select, _03_method_dropdown, _05_purchaser_chart, _05_supplier_chart, _05_KPIs
+from . import _03_date_select, _03_method_dropdown, _05_purchaser_chart, _05_supplier_chart, _05_KPIs, _06_price_chart
 
 image_path = "../assets/Stiesdal logo v1.png"
 
@@ -44,6 +44,10 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div:
             html.Div(
                 children=[_05_purchaser_chart.render(app, data)],
                 style={"width": "45%", "display": "inline-block", "margin-left": "60px"}
-            )
+            ),
+            html.Div(
+                children=[_06_price_chart.render(app, data)],
+                style={"width": "45%", "display": "inline-block", "margin-left": "10px"}
+            ),
         ]
     )

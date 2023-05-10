@@ -25,11 +25,13 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
         # filter table for dates specified
         filtered_data = data[(data["Announcement Date"] > start_date) & (data["Announcement Date"] < end_date)]
         if methods in list(data["CDR Method"].dropna().unique()):
-            filtered_data = filtered_data[data["CDR Method"] == methods]
-            # filtered_data = data[data["CDR Method"].isin(methods)]
+            filtered_data = filtered_data[filtered_data["CDR Method"] == methods]
 
-        if filtered_data.shape[0] == 0:
-            return html.Div("No data selected.", id=_00_own_ids.S_CHART)
+        # filter dataframe to exclude "Aggregate Supplier (Marketplace Report)" as a Supplier
+        filtered_data = filtered_data[~filtered_data["Supplier"].isin(["Aggregate Supplier (Marketplace Report)"])]
+
+        #if filtered_data.shape[0] == 0:
+        #    return html.Div("No data selected.", id=_00_own_ids.S_CHART)
 
         # creating the relevant graph "TOP_TEN_SUPPLIERS"
         fig = _04_bar_plot.build_plot(filtered_data[["Supplier", "Tons Purchased"]], h=1)

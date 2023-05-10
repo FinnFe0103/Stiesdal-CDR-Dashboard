@@ -1,5 +1,6 @@
 P_CHART = "purchaser-chart"
 S_CHART = "supplier-chart"
+PPT_CHART = "price-per-ton-chart"
 
 KPIS = "kpis"
 
