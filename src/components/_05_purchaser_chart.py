@@ -34,7 +34,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
         #    return html.Div("No data selected.", id=_00_own_ids.P_CHART)
 
         # creating the relevant graph "TOP_TEN_SUPPLIERS"
-        fig = _04_bar_plot.build_plot(filtered_data[["Purchaser", "Tons Purchased"]], h=1)
+        fig = _04_bar_plot.build_plot(filtered_data[["Purchaser", "Tons Purchased/Sold"]], h=1)
 
         return html.Div(dcc.Graph(figure=fig), id=_00_own_ids.P_CHART)
 

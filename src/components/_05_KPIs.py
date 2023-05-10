@@ -27,7 +27,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
             go.Indicator(
                 title = {"text": "Total Purchased (k)", "font":{"size":ts, "color":hx_t}},
                 mode = "number",
-                value = round(sum(filtered_data["Tons Purchased"])/1000, 2),
+                value = round(sum(filtered_data["Tons Purchased/Sold"])/1000, 2),
                 number = {'valueformat':'.2f', "suffix": "t", "font":{"size":fs, "color":hx}},
                 domain = {"row": 0, "column": 0}
             ),
@@ -45,7 +45,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
             go.Indicator(
                 title = {"text": "Purchases Delivered", "font":{"size":ts, "color":hx_t}},
                 mode = "number",
-                value = sum(filtered_data["Tons Delivered"]) / sum(filtered_data["Tons Purchased"]) *100 if sum(filtered_data["Tons Purchased"]) != 0 else 0,
+                value = sum(filtered_data["Tons Delivered"]) / sum(filtered_data["Tons Purchased/Sold"]) *100 if sum(filtered_data["Tons Purchased/Sold"]) != 0 else 0,
                 number = {'valueformat':'.2f', "suffix": "%", "font":{"size":fs, "color":hx}},
                 domain = {"row": 0, "column": 2}
             ),

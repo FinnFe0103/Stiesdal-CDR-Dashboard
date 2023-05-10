@@ -15,5 +15,6 @@ def import_data():
     cdr_fyi["Total price (USD)"].replace(0.0, np.NaN, inplace=True)
     cdr_fyi["Price per Ton"] = cdr_fyi["Total price (USD)"] / cdr_fyi["Tons Purchased"]
     cdr_fyi["Announcement Date"] = cdr_fyi["Announcement Date"].str.split(" ", n=1).str[0]
+    cdr_fyi.rename(columns={"Tons Purchased": "Tons Purchased/Sold"}, inplace=True)
 
     return cdr_fyi
