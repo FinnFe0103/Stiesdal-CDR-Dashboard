@@ -36,12 +36,12 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
             new = pd.DataFrame(pd.concat([group, single]), columns=["Tons Purchased/Sold"])
             fig = go.Figure(data=go.Pie(labels=new.index, values=new["Tons Purchased/Sold"], pull=[0, 0.2], textinfo='percent+label', textposition='inside'))
             fig.update_traces(textposition='outside', textinfo='percent+label', marker=dict(colors=['E5ECF6', '00497A']))
-            fig.update_layout(showlegend=False, height=600, width=960, title="Tons Purchased/Sold by Method")
+            fig.update_layout(showlegend=False, height=600, width=960, title="Share of"+str(methods)+" Tons Purchased/Sold")
         elif methods == "All Methods":
 
             fig = go.Figure(data=go.Pie(labels=filtered_data.index, values=filtered_data["Tons Purchased/Sold"], textinfo='percent+label', textposition='outside'))
             fig.update_traces(textposition='outside', textinfo='percent+label', marker=dict(colors=['acc2e2', '00497A', "001b2e", "002a47", "00365f", "00497a", "005e94", "0070b0", "0083cb", "0098e3"]))
-            fig.update_layout(showlegend=False, height=600, width=960, title="Tons Purchased/Sold by Method")
+            fig.update_layout(showlegend=False, height=600, width=960, title="Share of Tons Purchased/Sold by Method")
 
         return html.Div(dcc.Graph(figure=fig), id=_00_own_ids.PIE_CHART)
 
