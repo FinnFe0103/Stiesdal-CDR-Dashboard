@@ -36,7 +36,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
             new = pd.DataFrame(pd.concat([group, single]), columns=["Tons Purchased/Sold"])
             fig = go.Figure(data=go.Pie(labels=new.index, values=new["Tons Purchased/Sold"], pull=[0, 0.2], textinfo='percent+label', textposition='inside'))
             fig.update_traces(textposition='outside', textinfo='percent+label', marker=dict(colors=['E5ECF6', '00497A']))
-            fig.update_layout(showlegend=False, height=600, width=960, title="Share of"+str(methods)+" Tons Purchased/Sold")
+            fig.update_layout(showlegend=False, height=600, width=960, title="Share of "+str(methods)+" Tons Purchased/Sold")
         elif methods == "All Methods":
 
             fig = go.Figure(data=go.Pie(labels=filtered_data.index, values=filtered_data["Tons Purchased/Sold"], textinfo='percent+label', textposition='outside'))
